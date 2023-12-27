@@ -1,15 +1,16 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script lang="ts">
+	export let data;
+	let todos = data.result;
+</script>
 
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-5">
-		<h1 class="h1">Let's get cracking bones!</h1>
-		<p>Start by exploring:</p>
-		<ul>
-			<li><code class="code">/src/routes/+layout.svelte</code> - barebones layout</li>
-			<li><code class="code">/src/app.postcss</code> - app wide css</li>
-			<li>
-				<code class="code">/src/routes/+page.svelte</code> - this page, you can replace the contents
-			</li>
-		</ul>
-	</div>
-</div>
+<h1 class="h1">
+	Todos{#if todos.length}<span>{' '}({todos.length})</span>{/if}:
+</h1>
+<ul>
+	{#each todos as todo}
+		<li>
+			<input type="checkbox" bind:checked={todo.completed} />
+			<span>{todo.content}</span>
+		</li>
+	{/each}
+</ul>

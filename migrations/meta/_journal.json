@@ -15,6 +15,34 @@
       "when": 1703670069858,
       "tag": "0001_first_power_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1703670501558,
+      "tag": "0002_moaning_the_fallen",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1703670564223,
+      "tag": "0003_noisy_proteus",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1703670763408,
+      "tag": "0004_sweet_trauma",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1703677947526,
+      "tag": "0005_messy_dormammu",
+      "breakpoints": true
     }
   ]
 }
