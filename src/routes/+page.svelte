@@ -1,16 +1,21 @@
 <script lang="ts">
+	import Todo from '$lib/components/todo.svelte';
 	export let data;
 	let todos = data.result;
 </script>
 
-<h1 class="h1">
-	Todos{#if todos.length}<span>{' '}({todos.length})</span>{/if}:
-</h1>
-<ul>
-	{#each todos as todo}
-		<li>
-			<input type="checkbox" bind:checked={todo.completed} />
-			<span>{todo.content}</span>
-		</li>
-	{/each}
-</ul>
+<div class="w-[60%] mx-auto mt-4">
+	<h1 class="h1 mb-4">
+		Todos{#if todos.length}<span>{' '}({todos.length})</span>{/if}:
+	</h1>
+	<form method="POST" class="card p-4 mb-4 flex gap-2 justify-center text-black">
+		<input type="text" name="content" placeholder="What needs to be done?" />
+		<input type="datetime-local" name="due" />
+		<button class="btn variant-ghost-primary text-white">Add</button>
+	</form>
+	<ul class="flex flex-col gap-4">
+		{#each todos as todo (todo.id)}
+			<Todo {todo} />
+		{/each}
+	</ul>
+</div>
