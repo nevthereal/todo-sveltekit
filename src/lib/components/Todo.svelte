@@ -13,7 +13,10 @@
 				{/if}
 			</button>
 		</form>
-		<span class={`my-auto ${todo.completed && 'line-through'}`}>{todo.content}</span>
+		<div class={`my-auto ${todo.completed && 'line-through'}`}>
+			<h1 class="h1">{todo.content}</h1>
+			<p>{todo.content}</p>
+		</div>
 	</div>
 	<form method="POST" action="?/deleteTodo">
 		<button class="btn" name="id" value={todo.id}><i class="fa-solid fa-trash"></i></button>
