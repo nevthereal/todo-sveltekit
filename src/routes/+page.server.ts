@@ -25,5 +25,10 @@ export const actions = {
 		const formData = await request.formData();
 		const id = parseInt(formData.get('id') as string);
 		await db.delete(todosTable).where(eq(todosTable.id, id));
+	},
+	triggerComplete: async ({ request }) => {
+		const formData = await request.formData();
+		const id = parseInt(formData.get('id') as string);
+		await db.update(todosTable).set({ completed: true }).where(eq(todosTable.id, id));
 	}
 } satisfies Actions;
