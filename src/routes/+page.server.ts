@@ -15,18 +15,14 @@ export const actions = {
 		const formData = await request.formData();
 		console.log(formData);
 		const content = formData.get('content') as string;
-		const due = formData.get('due') as string;
 		await db.insert(todosTable).values([
 			{
-				content,
-				due
+				content
 			}
 		]);
 	},
 	deleteTodo: async ({ request }) => {
-		console.log(request.json);
 		const formData = await request.formData();
-		console.log(formData);
 		const id = parseInt(formData.get('id') as string);
 		await db.delete(todosTable).where(eq(todosTable.id, id));
 	}
