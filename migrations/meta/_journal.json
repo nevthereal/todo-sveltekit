@@ -8,6 +8,13 @@
       "when": 1703923594035,
       "tag": "0000_curved_midnight",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1703964499825,
+      "tag": "0001_dizzy_golden_guardian",
+      "breakpoints": true
     }
   ]
 }

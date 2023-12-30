@@ -14,12 +14,13 @@ export const actions = {
 	createTodo: async ({ request }) => {
 		const formData = await request.formData();
 		console.log(formData);
+		const title = formData.get('title') as string;
 		const content = formData.get('content') as string;
-		await db.insert(todosTable).values([
-			{
-				content
-			}
-		]);
+		await db.insert(todosTable).values({
+			completed: false,
+			title: title,
+			content: content
+		});
 	},
 	deleteTodo: async ({ request }) => {
 		const formData = await request.formData();
