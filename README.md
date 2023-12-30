@@ -10,4 +10,4 @@ This is a todo app I am building from scratch to learn Databases and everything 
 
 - [SvelteKit](https://kit.svelte.dev/)
 - [Drizzle ORM](https://orm.drizzle.team)
-- [Supabase](https://supabase.com)
+- [Turso](https://turso.tech)
