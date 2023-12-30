@@ -1,16 +1,14 @@
 import type { Config } from 'drizzle-kit';
-import * as dotenv from 'dotenv';
+import 'dotenv/config';
 
-const { DB_URL } = process.env;
-if (!DB_URL) {
-	throw new Error('DB_URL is not set');
-}
+const { DB_URL, AUTH_TOKEN } = process.env;
 
 export default {
 	schema: './src/lib/db/schema.ts',
 	out: './migrations',
-	driver: 'pg',
+	driver: 'turso',
 	dbCredentials: {
-		connectionString: DB_URL
+		url: process.env.DB_URL!,
+		authToken: process.env.AUTH_TOKEN
 	}
 } satisfies Config;

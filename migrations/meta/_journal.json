@@ -1,75 +1,12 @@
 {
   "version": "5",
-  "dialect": "pg",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1703669981110,
-      "tag": "0000_parched_carnage",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1703670069858,
-      "tag": "0001_first_power_man",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1703670501558,
-      "tag": "0002_moaning_the_fallen",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1703670564223,
-      "tag": "0003_noisy_proteus",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "5",
-      "when": 1703670763408,
-      "tag": "0004_sweet_trauma",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "5",
-      "when": 1703677947526,
-      "tag": "0005_messy_dormammu",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "5",
-      "when": 1703708687856,
-      "tag": "0006_chief_cardiac",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "5",
-      "when": 1703709143641,
-      "tag": "0007_complex_nightcrawler",
-      "breakpoints": true
-    },
-    {
-      "idx": 8,
-      "version": "5",
-      "when": 1703832900444,
-      "tag": "0008_nervous_magdalene",
-      "breakpoints": true
-    },
-    {
-      "idx": 9,
-      "version": "5",
-      "when": 1703836520325,
-      "tag": "0009_wooden_toad_men",
+      "when": 1703923594035,
+      "tag": "0000_curved_midnight",
       "breakpoints": true
     }
   ]

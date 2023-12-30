@@ -1,1 +1,0 @@
-ALTER TABLE "todos" ALTER COLUMN "created_at" DROP DEFAULT;
