@@ -5,7 +5,7 @@
 
 <li class="flex card justify-between p-4 items-center">
 	<div class="flex gap-4">
-		<form action="?/triggerComplete" method="POST" class="my-auto">
+		<form action="?/toggleComplete" method="POST" class="my-auto">
 			<button class="btn" name="id" value={todo.id}>
 				<i class={`${todo.completed ? 'fa-solid' : 'fa-regular'} fa-circle-check text-2xl`}></i>
 			</button>
