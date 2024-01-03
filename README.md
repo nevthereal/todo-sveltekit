@@ -1,6 +1,6 @@
 # Todo App
 
-A todo app powered by SvelteKit, Drizzle ORM and Supabase
+A todo app powered by SvelteKit, Drizzle ORM and Turso
 
 ## About this repository
 
