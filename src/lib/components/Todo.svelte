@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { todosTable } from '$lib/db/schema';
-	export let todo: any;
+	export let todo: Todo;
 </script>
 
 <li class="flex card justify-between p-4 items-center">
