@@ -8,7 +8,7 @@
 	<h1 class="h1 mb-4">
 		Todos{#if todos.length}<span>{' '}({todos.length})</span>{/if}:
 	</h1>
-	<form method="POST" action="?/createTodo" class="mb-4 flex gap-2 text-black">
+	<form method="POST" class="mb-4 flex gap-2 text-black">
 		<input type="text" name="title" placeholder="Title" />
 		<input type="text" name="content" placeholder="What needs to be done?" />
 		<button class="btn variant-ghost-primary text-white">Add</button>
