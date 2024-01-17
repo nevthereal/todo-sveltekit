@@ -4,7 +4,7 @@
 	let todos = data.result;
 </script>
 
-<div class="w-[60%] mx-auto mt-4">
+<div class="w-[60%] mx-auto mt-16">
 	<h1 class="h1 mb-4">
 		Todos{#if todos.length}<span>{' '}({todos.length})</span>{/if}:
 	</h1>
