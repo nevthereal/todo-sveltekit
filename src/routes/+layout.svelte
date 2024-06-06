@@ -1,5 +1,10 @@
 <script lang="ts">
+	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 	import '../app.postcss';
+
+	const queryClient = new QueryClient();
 </script>
 
-<slot />
+<QueryClientProvider client={queryClient}>
+	<slot />
+</QueryClientProvider>
