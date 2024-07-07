@@ -1,16 +1,20 @@
 <script lang="ts">
+	import { invalidate } from '$app/navigation';
 	import Todo from '$lib/components/Todo.svelte';
 	import { superForm } from 'sveltekit-superforms';
 
 	export let data;
-	let todos = data.todos;
 
-	const { form, enhance } = superForm(data.form, {});
+	const { form, enhance } = superForm(data.form, {
+		onUpdate() {
+			invalidate('fetch:todos');
+		}
+	});
 </script>
 
 <div class="w-[60%] mx-auto mt-16">
 	<h1 class="h1 mb-4">
-		Todos{#if todos.length}<span>{' '}({todos.length})</span>{/if}:
+		Todos{#if data.todos.length}<span>{' '}({data.todos.length})</span>{/if}:
 	</h1>
 	<form method="POST" class="mb-4 flex gap-2 text-black" use:enhance>
 		<input type="text" name="title" placeholder="Title" bind:value={$form.title} />
@@ -23,7 +27,7 @@
 		<button class="btn variant-ghost-primary text-white">Add</button>
 	</form>
 	<ul class="flex flex-col gap-4">
-		{#each todos as todo (todo.id)}
+		{#each data.todos as todo (todo.id)}
 			<Todo {todo} />
 		{/each}
 	</ul>
