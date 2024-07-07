@@ -4,5 +4,5 @@ export const todosTable = sqliteTable('todos', {
 	id: integer('id').primaryKey(),
 	title: text('title').notNull(),
 	content: text('content'),
-	completed: integer('completed', { mode: 'boolean' }).notNull().default(false)
+	completed: integer('completed', { mode: 'boolean' }).default(false)
 });

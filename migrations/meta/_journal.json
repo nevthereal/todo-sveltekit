@@ -15,6 +15,13 @@
       "when": 1703964499825,
       "tag": "0001_dizzy_golden_guardian",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1720336456612,
+      "tag": "0002_silent_robin_chapel",
+      "breakpoints": true
     }
   ]
 }

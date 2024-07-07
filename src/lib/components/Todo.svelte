@@ -1,15 +1,13 @@
 <script lang="ts">
 	import { todosTable } from '$lib/db/schema';
-	export let todo: Todo;
+	export let todo: typeof todosTable.$inferSelect;
 
 	const deleteTodo = async () => {
 		await fetch(`/api/delete?id=${todo.id}`);
-		window.location.reload();
 	};
 
 	const toggleComplete = async () => {
 		await fetch(`/api/toggle?id=${todo.id}`);
-		window.location.reload();
 	};
 </script>
 

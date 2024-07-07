@@ -1,24 +1,38 @@
 import { db } from '$lib/db/db';
 import { todosTable } from '$lib/db/schema';
-import { desc, eq } from 'drizzle-orm';
+import { desc } from 'drizzle-orm';
 import type { Actions, PageServerLoad } from './$types';
+import { z } from 'zod';
+import { fail, superValidate } from 'sveltekit-superforms';
+import { zod } from 'sveltekit-superforms/adapters';
 
-export const load = (async () => {
-	const result = await db.select().from(todosTable).orderBy(desc(todosTable.id));
+const schema = z.object({
+	title: z.string(),
+	content: z.string()
+});
+
+export const load: PageServerLoad = async () => {
+	const todos = await db.select().from(todosTable).orderBy(desc(todosTable.id));
+
+	const form = await superValidate(zod(schema));
+
 	return {
-		result
+		todos,
+		form
 	};
-}) satisfies PageServerLoad;
+};
 
 export const actions = {
 	default: async ({ request }) => {
-		const formData = await request.formData();
-		const title = formData.get('title') as string;
-		const content = formData.get('content') as string;
+		const form = await superValidate(request, zod(schema));
+
+		if (!form.valid) {
+			return fail(400, { form });
+		}
+
 		await db.insert(todosTable).values({
-			completed: false,
-			title: title,
-			content: content
+			title: form.data.title,
+			content: form.data.content
 		});
 	}
 } satisfies Actions;
