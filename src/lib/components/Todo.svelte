@@ -1,16 +1,13 @@
 <script lang="ts">
-	import { invalidate } from '$app/navigation';
 	import { todosTable } from '$lib/db/schema';
 	export let todo: typeof todosTable.$inferSelect;
 
 	const deleteTodo = async () => {
 		await fetch(`/api/delete?id=${todo.id}`);
-		invalidate('fetch:todos');
 	};
 
 	const toggleComplete = async () => {
 		await fetch(`/api/toggle?id=${todo.id}`);
-		invalidate('fetch:todos');
 	};
 </script>
 
