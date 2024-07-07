@@ -1,11 +1,16 @@
 <script lang="ts">
+	import { invalidate } from '$app/navigation';
 	import Todo from '$lib/components/Todo.svelte';
 	import { superForm } from 'sveltekit-superforms';
 
 	export let data;
-	let todos = data.todos;
+	$: todos = data.todos;
 
-	const { form, enhance } = superForm(data.form, {});
+	const { form, enhance } = superForm(data.form, {
+		onUpdated() {
+			invalidate('query:todos');
+		}
+	});
 </script>
 
 <div class="w-[60%] mx-auto mt-16">

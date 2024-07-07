@@ -11,7 +11,9 @@ const schema = z.object({
 	content: z.string()
 });
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ depends }) => {
+	depends('query:todos');
+
 	const todos = await db.select().from(todosTable).orderBy(desc(todosTable.id));
 
 	const form = await superValidate(zod(schema));
