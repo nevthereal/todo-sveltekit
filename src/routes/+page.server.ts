@@ -1,31 +1,30 @@
 import { db } from '$lib/db/db';
 import { todosTable } from '$lib/db/schema';
-import { desc } from 'drizzle-orm';
+import { desc, eq } from 'drizzle-orm';
 import type { Actions, PageServerLoad } from './$types';
-import { z } from 'zod';
 import { fail, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
-
-const schema = z.object({
-	title: z.string(),
-	content: z.string()
-});
+import { createSchema, deleteSchema, toggleSchema } from '$lib/zod';
 
 export const load: PageServerLoad = async ({ depends }) => {
 	depends('query:todos');
 	const todos = await db.select().from(todosTable).orderBy(desc(todosTable.id));
 
-	const form = await superValidate(zod(schema));
+	const createForm = await superValidate(zod(createSchema));
+	const toggleForm = await superValidate(zod(toggleSchema));
+	const deleteForm = await superValidate(zod(deleteSchema));
 
 	return {
 		todos,
-		form
+		createForm,
+		toggleForm,
+		deleteForm
 	};
 };
 
 export const actions = {
-	default: async ({ request }) => {
-		const form = await superValidate(request, zod(schema));
+	create: async ({ request }) => {
+		const form = await superValidate(request, zod(createSchema));
 
 		if (!form.valid) {
 			return fail(400, { form });
@@ -35,5 +34,31 @@ export const actions = {
 			title: form.data.title,
 			content: form.data.content
 		});
+	},
+	toggle: async ({ request }) => {
+		const form = await superValidate(request, zod(toggleSchema));
+
+		if (!form.valid) {
+			return fail(400, { form });
+		}
+
+		await db
+			.update(todosTable)
+			.set({
+				completed: !form.data.state
+			})
+			.where(eq(todosTable.id, form.data.id));
+
+		return { form };
+	},
+	delete: async ({ request }) => {
+		const form = await superValidate(request, zod(toggleSchema));
+
+		if (!form.valid) {
+			return fail(400, { form });
+		}
+
+		await db.delete(todosTable).where(eq(todosTable.id, form.data.id));
+		return { form };
 	}
 } satisfies Actions;

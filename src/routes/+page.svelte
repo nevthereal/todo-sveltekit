@@ -6,7 +6,7 @@
 	export let data;
 	$: todos = data.todos;
 
-	const { form, enhance } = superForm(data.form, {
+	const { form, enhance } = superForm(data.createForm, {
 		onUpdated() {
 			invalidate('query:todos');
 		}
@@ -17,7 +17,7 @@
 	<h1 class="h1 mb-4">
 		Todos{#if todos.length}<span>{' '}({todos.length})</span>{/if}:
 	</h1>
-	<form method="POST" class="mb-4 flex gap-2 text-black" use:enhance>
+	<form method="POST" class="mb-4 flex gap-2 text-black" action="?/create" use:enhance>
 		<input type="text" name="title" placeholder="Title" bind:value={$form.title} />
 		<input
 			type="text"
@@ -29,7 +29,7 @@
 	</form>
 	<ul class="flex flex-col gap-4">
 		{#each todos as todo (todo.id)}
-			<Todo {todo} />
+			<Todo {todo} toggleFormData={data.toggleForm} deleteFormData={data.deleteForm} />
 		{/each}
 	</ul>
 </div>
